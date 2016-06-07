@@ -3,22 +3,34 @@
 {% if request.user.is_authenticated %}
 {% for group in user.groups.all %}
 {% if group.name == "opiekunowie" %}
-<style type="text/css">
-
-      button {
-        background-color: #5cb85c;
-
+  <style type="text/css">
+      
+    div.fade {
+        display: none;
       }
 
+    div.formWrapper {
+      background-color: white;
+    }
 
   </style>
-
-    <h1>Dodaj ogłoszenie</h1>
+  
+<div class="container fade">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="formWrapper">
+            <h3>Dodaj ogłoszenie</h3> 
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-success">Dodaj</button>
     </form>
-
+    
+        </div>
+      </div>
+      </div>
+    <br>
+    <div><a href="/tablica/" class="btn btn-success pull-right">Powrót</a>
+</div>
 {% endif %}
 {% endfor %}
 {% else %}

@@ -13,6 +13,6 @@ class PostForm(forms.ModelForm):
         
         #nadawanie nazw klasy
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'text': forms.TextInput(attrs={'class': 'form-control'})
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tytuł ogłoszenia'}),
+            'text': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Treść ogłoszenia', 'rows': '5'})
         }

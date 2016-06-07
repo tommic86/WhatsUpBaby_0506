@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+﻿{% block content %}
+
+      <div><h1>{{ dziecko }}</h1></div>
+
+      <div id="detailsTable" class="row">
+
+        <div class="col-xs-3">
+        </div>
+
+        <div class="col-xs-6">
+        <div class="tableWrapper">
+		{% for rodzic in rodzice %}	
+          <table id="groupDetailsTable" class="table">
+              <caption>Opiekun</caption>
+              <tbody>
+                  <tr>
+                      <td>Imię i nazwisko</td>
+                      <td>{{ rodzic }}</td>
+                  </tr>
+                  <tr>
+                      <td>Telefon</td>
+                      <td>{{ rodzic.telefon }}</td>
+                  </tr>
+                  <tr>
+                      <td>Email</td>
+                      <td>{{ rodzic.user.email }}</td>
+                  </tr>                  
+              </tbody>
+          </table>
+		  <br/>
+		{% endfor %}
+                   
+
+          <button type="button" class="btn btn-link" ><a href="/opiekun/lista_dzieci">Powrót</button>
+
+        </div>
+        </div>
+
+        <div class="col-xs-3">
+        </div>
+      
+      </div>
+
+{% endblock %}

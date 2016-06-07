@@ -1,0 +1,31 @@
+from django.shortcuts import render, render_to_response
+from opiekun.models import Opiekun
+from rodzic.models import Dziecko
+
+def loggedin(request):
+    return render_to_response('loggedin_opiekun.html',
+                              {'full_name': request.user.username})
+
+
+def lista_dzieci(request):
+    username = None
+    if request.user.is_authenticated():
+        username = request.user
+        
+    opiekun = Opiekun.objects.get(user=username)
+    grupy = opiekun.grupy.all()
+    
+    result = {}
+    for grupa in grupy:
+        dzieci = Dziecko.objects.filter(grupa = grupa)
+        result[grupa.nazwa] = dzieci
+    
+    
+    #import pdb;pdb.set_trace()
+    return render(request, 'lista_dzieci.html', {'grupy': result})
+
+def home(request):
+    return render_to_response('home.html',
+                              {'full_name': request.user.username},
+                              {'request': request})
+    

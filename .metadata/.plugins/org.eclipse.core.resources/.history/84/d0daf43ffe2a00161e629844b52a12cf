@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What's up Baby</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Chela+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+  <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/velocity.min.js"></script>
+  <script type="text/javascript" src="js/velocity.ui.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+{% block content %}
+{% for group in user.groups.all %}
+    {% if group.name == "opiekunowie" %}
+    	    
+            <a href="post_new"><span class="glyphicon glyphicon-plus"></span></a>
+            
+    {% endif %}
+{% endfor %}
+{% if request.user.is_authenticated %}
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <p><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a><p>
+        <p>{{ post.text|linebreaks }}</p>
+        <p>{{ post.author|linebreaks }}</p>
+        <br>
+    </div>
+{% endfor %}
+{% else %}
+    <div>
+        <p>musisz sie <a href="../rodzic/login">zalogowac</a> by ogladac tablice</p>
+
+
+    </div>
+{% endif %}
+
+{% endblock %}

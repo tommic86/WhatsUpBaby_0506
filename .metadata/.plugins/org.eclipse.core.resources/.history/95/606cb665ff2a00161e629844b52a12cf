@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What's up Baby</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./static/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Chela+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="./static/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+  <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/velocity.min.js"></script>
+  <script type="text/javascript" src="js/velocity.ui.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+    <style type="text/css">
+
+      figure{
+        display: none;
+      }
+
+      li {
+        background-color: #f8f8f8;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        color: #888;
+        padding: 15px;
+        margin-bottom: 5px;
+      }
+
+      li:first-child {
+      background: none;        
+      }
+
+  </style>
+  </head>
+
+<body>
+<div style="background-color: rgba(255,209,0,0.9); min-height: 1080px;">
+
+  <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+           <ul class="nav navbar-nav">
+            <li><a href="index.html" target="_self">Strona glowna</a></li>
+            <li class="active"><a href="newslist.html" target="_self">Tablica ogloszen</a></li>
+            <li><a href="#" target="_self">Poczta</a></li>
+            <li><a href="#" target="_self">Zdjecia</a></li>
+            <li><a href="groups.html">Dane rodzicow</a></li>
+           </ul>
+       <ul class="nav navbar-nav navbar-right"><li><a href="#">Wyjoguj</a></li></ul>
+      </div>
+    </div>
+  </nav>
+    <div class="container">
+    <div id="menu-icons-wrapper" >
+
+        <ul style="list-style: none; color: #888;">
+{% block content %}
+{% for group in user.groups.all %}
+    {% if group.name == "opiekunowie" %}
+    	    
+            <li style="text-align: right;"><p><a href="newsform.html" class="btn btn-success">Dodaj ogloszenie</a></p></li>
+            
+    {% endif %}
+{% endfor %}
+{% if request.user.is_authenticated %}
+{% for post in posts %}
+
+          <li style="background-color: white;">
+              <h2>{{ post.title }}</h2>
+              <p>{{ post.text|linebreaks }}</p>
+              <p>published: {{ post.published_date }}</p>
+        		<p>{{ post.author|linebreaks }}</p>
+              <p><a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-success">Zobacz calosc &raquo;</a></p>
+          </li>
+{% endfor %}
+        </ul>
+
+      </div>
+    </div>
+</div>
+</body>
+</html>
+{% else %}
+    <div>
+        <p>musisz sie <a href="../rodzic/login">zalogowac</a> by ogladac tablice</p>
+
+
+    </div>
+{% endif %}
+
+{% endblock %}

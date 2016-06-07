@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% if request.user.is_authenticated %}
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <p>{{ post.title }}<p>
+        <p>{{ post.text|linebreaks }}</p>
+        <p>{{ post.author|linebreaks }}</p>
+        <br>
+    </div>
+{% endfor %}
+{% endif %}
+{% for group in user.groups.all %}
+    {% if group.name == "opiekunowie" %}
+    	    
+            <a href="post_new"><span class="glyphicon glyphicon-plus"></span></a>
+            
+    {% endif %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% if request.user.is_authenticated %}
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <p><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a><p>
+        <p>{{ post.text|linebreaks }}</p>
+        <p>{{ post.author|linebreaks }}</p>
+        <br>
+    </div>
+{% endfor %}
+{% else %}
+    <div>
+        <p>musisz sie <a href="../rodzic/login">zalogowac</a> by ogladac tablice</p>
+
+
+    </div>
+{% endif %}
+{% for group in user.groups.all %}
+    {% if group.name == "opiekunowie" %}
+    	    
+            <a href="post_new"><span class="glyphicon glyphicon-plus"></span></a>
+            
+    {% endif %}
+{% endfor %}
+{% endblock %}

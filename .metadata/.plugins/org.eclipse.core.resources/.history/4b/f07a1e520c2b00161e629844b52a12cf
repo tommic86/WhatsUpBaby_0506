@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% if request.user.is_authenticated %}
+{% for group in user.groups.all %}
+{% if group.name == "opiekunowie" %}
+<style type="text/css">
+
+      button {
+        background-color: #5cb85c;
+
+      }
+
+
+  </style>
+
+    <h1>Dodaj ogłoszenie</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Dodaj</button>
+    </form>
+
+{% endif %}
+{% endfor %}
+{% else %}
+	nie jesteś zalogowany zaloguj sie tu
+{% endif %}
+{% endblock %}

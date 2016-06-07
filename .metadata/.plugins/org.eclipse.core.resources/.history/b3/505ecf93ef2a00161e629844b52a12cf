@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <p>{{ post.title }}<p>
+        <p>{{ post.text|linebreaks }}</p>
+        <p>{{ post.author|linebreaks }}</p>
+        <br>
+    </div>
+{% endfor %}
+{% for group in user.groups.all %}
+    {% if group.name == "opiekunowie" %}
+    	    
+          {% block content %}
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+            
+    {% endif %}
+{% endfor %}
+{% endblock %}

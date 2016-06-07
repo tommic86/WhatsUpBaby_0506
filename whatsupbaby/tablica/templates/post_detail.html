@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if post.published_date %}
+        <div class="jumbotron">
+        <div class="row">
+        <div class="col-xs-12">
+        <div>
+        
+    		  <h2>{{ post.title }}</h2> 
+    		  <p>{{ post.text|linebreaks }}</p>
+                <p align="right">Opublikowano: {{ post.published_date }} <br/>Autor: {{ post.author }}</p>
+       
+                
+        </div>
+        </div>
+        </div>
+        </div>
+         {% endif %}
+{% endblock %}

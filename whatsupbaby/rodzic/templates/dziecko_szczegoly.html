@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 ﻿{% block content %}
 
+    <div class="container fade">
       <div><h1>{{ dziecko }}</h1></div>
 
       <div id="detailsTable" class="row">
@@ -31,8 +32,7 @@
 		  <br/>
 		{% endfor %}
                    
-
-          <button type="button" class="btn btn-link" ><a href="/opiekun/lista_dzieci">Powrót</button>
+          <a href="/opiekun/lista_dzieci"><button type="button" class="btn btn-success" style="margin-bottom: 20px;">Powrót</button></a>
 
         </div>
         </div>
@@ -41,5 +41,5 @@
         </div>
       
       </div>
-
+	</div>
 {% endblock %}

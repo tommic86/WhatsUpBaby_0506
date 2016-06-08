@@ -1,23 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
+	    
+	<div class="container fade">
+
+    <div><h4>Kliknij na imię dziecka aby wyświetlić dane rodziców</h4></div>
  
 {% for key, value in grupy.items %}
     <div><h1>{{ key }}</h1></div>
-                      <div id="detailsTable" class="row">
- 
-        <div class="col-xs-4">
+    <div id="detailsTable" class="row">
+ 		<div class="col-xs-4">
         </div>
  
         <div class="col-xs-4">
-        <div class="tableWrapper">
-          <div class="list-group">
-    {% for dziecko in value %}
-                                <a href="{% url 'dziecko_szczegoly' dziecko.id %}" class="list-group-item">{{ dziecko }}</a>
-    {% endfor %}
-                      </div>
-                                          </div>
+        	<div class="tableWrapper">
+          		<div class="list-group">
+    				{% for dziecko in value %}
+                    	<a href="{% url 'dziecko_szczegoly' dziecko.id %}" class="list-group-item">{{ dziecko }}</a>
+    				{% endfor %}
+                </div>
+            </div>
         </div>
 {% endfor %}
         <div class="col-xs-4">
+        </div>
         </div>
 {% endblock content %}

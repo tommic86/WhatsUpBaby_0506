@@ -12,9 +12,9 @@ $(document).ready(function(){
   $(".fade")
     .velocity("transition.fadeIn", { delay: 300, stagger: 150, easing: "easeInQuint"} ); 
 
-  $('#logo').click(function(){
-    $('#mainContent').load('ajax.html');
-  });
+  //$('#logo').click(function(){
+  //  $('#mainContent').load('ajax.html');
+  //});
 
 });
 

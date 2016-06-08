@@ -11,14 +11,14 @@
   float:left;
   height: 60px;
   margin: 10px 15px 5px 35px;
-  -webkit-transition: rotate 4s; /* Safari */
-    transition: rotate 4s;
+  -webkit-transition: all 1s ease; /* Safari */
+    transition: all 1s ease;
 }
 
 #logoTopBar:hover{
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
+  -ms-transform: rotateY(1440deg); /* IE 9 */
+  -webkit-transform: rotateY(1440deg); /* Chrome, Safari, Opera */
+  transform: rotateY(1440deg);
 }
 
 /* #navbarCollapse ul {
